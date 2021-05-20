@@ -13,19 +13,19 @@ describe('Basic user flow for SPA ', () => {
   });
 
   // test 2 is given
-  // it('Test2: Make sure <journal-entry> elements are populated', async () => {
-  //   let allArePopulated = true;
-  //   let data, plainValue;
-  //   const entries = await page.$$('journal-entry');
-  //   for (let i = 0; i < entries.length; i++) {
-  //     data = await entries[i].getProperty('entry');
-  //     plainValue = await data.jsonValue();
-  //     if (plainValue.title.length == 0) { allArePopulated = false; }
-  //     if (plainValue.date.length == 0) { allArePopulated = false; }
-  //     if (plainValue.content.length == 0) { allArePopulated = false; }
-  //   }
-  //   expect(allArePopulated).toBe(true);
-  // }, 30000);
+  it('Test2: Make sure <journal-entry> elements are populated', async () => {
+    let allArePopulated = true;
+    let data, plainValue;
+    const entries = await page.$$('journal-entry');
+    for (let i = 0; i < entries.length; i++) {
+      data = await entries[i].getProperty('entry');
+      plainValue = await data.jsonValue();
+      if (plainValue.title.length == 0) { allArePopulated = false; }
+      if (plainValue.date.length == 0) { allArePopulated = false; }
+      if (plainValue.content.length == 0) { allArePopulated = false; }
+    }
+    expect(allArePopulated).toBe(true);
+  }, 30000);
 
   it('Test3: Clicking first <journal-entry>, new URL should contain /#entry1', async () => {
     // implement test3: Clicking on the first journal entry should update the URL to contain “/#entry1”
